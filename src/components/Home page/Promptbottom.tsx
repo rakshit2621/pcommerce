@@ -48,7 +48,7 @@ const PromptInput = () => {
         {/* Fixed Send Button */}
         <button
           className={`absolute bottom-0.5 right-1 w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 ${
-            inputValue ? "opacity-100 bg-gray-800 cursor-pointer outline-slate-800" : "opacity-50 bg-gray-500 cursor-not-allowed"
+            inputValue ? "opacity-100 bg-green-600 cursor-pointer outline-slate-800" : "opacity-50 bg-gray-500 cursor-not-allowed"
           }`}
           disabled={!inputValue || clicked}
           onClick={handleClick}

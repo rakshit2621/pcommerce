@@ -9,7 +9,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <Navbar/>
       <Background />
      
-      <div className="relative z-10">{children}</div>
+      <div className="relative w-full z-10 ">{children}</div>
      
     </div>
   );

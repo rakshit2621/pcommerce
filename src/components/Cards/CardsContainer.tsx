@@ -21,7 +21,7 @@ const CardContainer = () => {
   ];
 
   return (
-    <div className="w-full pt-2 px-2 sm:px-4 pb-4 min-h-screen bg-gray-100 mt-20">
+    <div className="w-full pt-2 px-2 sm:px-4 pb-4 min-h-screen mt-20">
 
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">

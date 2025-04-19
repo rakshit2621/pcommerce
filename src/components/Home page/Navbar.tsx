@@ -3,9 +3,11 @@ import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { GoHeart } from "react-icons/go";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
+import Auth from "../Auth/Auth";
 
 const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [profileopen, setProfileopen] = useState(false);
 
   return (
     <>
@@ -16,12 +18,16 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center  text-red-600 cursor-pointer">
             <img src="/logo.png" alt="Logo" className="h-10" />
-            <span className="text-2xl text-blue-400 font-nosifer">commerce</span>
+            <span className="text-2xl text-blue-400 font-nosifer">
+              commerce
+            </span>
           </div>
 
           {/* Nav Links (hide on small screens) */}
           <div className="hidden md:flex gap-6 text-blue-100">
-            <div className="cursor-pointer hover:opacity-80">Business Services</div>
+            <div className="cursor-pointer hover:opacity-80">
+              Business Services
+            </div>
             <div className="cursor-pointer hover:opacity-80">Knowledge Hub</div>
             <div className="cursor-pointer hover:opacity-80">About</div>
           </div>
@@ -29,15 +35,26 @@ const Navbar = () => {
 
         {/* Right Side */}
         <div className="flex items-center gap-6 text-white">
-          <div className="text-red-600 cursor-pointer hover:opacity-80">
+          <div className="text-red-600 cursor-pointer hover:opacity-90">
             <GoHeart className="text-3xl" />
           </div>
-          <div className="text-blue-600 cursor-pointer hover:opacity-80">
-            <FaUserCircle className="text-3xl" />
-          </div>
+          {/* Profile button */}
+          <div className="relative inline-block">
+      <div
+        className="text-blue-600 cursor-pointer hover:opacity-80"
+        onClick={() => setProfileopen((prev) => !prev)}
+      >
+        <FaUserCircle className="text-3xl" />
+      </div>
+
+      <Auth profileopen={profileopen} setProfileopen={setProfileopen} />
+    </div>
 
           {/* Hamburger Menu - shown only on small screens */}
-          <div className="md:hidden cursor-pointer" onClick={() => setSidebarOpen(true)}>
+          <div
+            className="md:hidden cursor-pointer"
+            onClick={() => setSidebarOpen(true)}
+          >
             <HiMenuAlt3 className="text-3xl" />
           </div>
         </div>
@@ -65,9 +82,24 @@ const Navbar = () => {
           />
         </div>
         <div className="flex flex-col gap-4 p-4 text-gray-200">
-          <div className="cursor-pointer hover:text-blue-500" onClick={() => setSidebarOpen(false)}>Business Services</div>
-          <div className="cursor-pointer hover:text-blue-500" onClick={() => setSidebarOpen(false)}>Knowledge Hub</div>
-          <div className="cursor-pointer hover:text-blue-500" onClick={() => setSidebarOpen(false)}>About</div>
+          <div
+            className="cursor-pointer hover:text-blue-500"
+            onClick={() => setSidebarOpen(false)}
+          >
+            Business Services
+          </div>
+          <div
+            className="cursor-pointer hover:text-blue-500"
+            onClick={() => setSidebarOpen(false)}
+          >
+            Knowledge Hub
+          </div>
+          <div
+            className="cursor-pointer hover:text-blue-500"
+            onClick={() => setSidebarOpen(false)}
+          >
+            About
+          </div>
         </div>
       </div>
     </>

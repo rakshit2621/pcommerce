@@ -16,7 +16,7 @@ const ProductCard = ({
     <div className="relative bg-black rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
  
 <div><GoHeart className="absolute top-3 right-3 text-red-600 text-xl cursor-pointer z-10" />
-      <img src={image} alt={name} className="w-full h-40 object-cover" />
+      <img src={image} alt={name} className="w-full  object-cover" />
 
       <div className="p-4 flex flex-col gap-1">
         <h2 className="text-gray-200">{name}</h2>
