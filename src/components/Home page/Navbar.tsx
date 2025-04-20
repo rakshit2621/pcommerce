@@ -40,15 +40,15 @@ const Navbar = () => {
           </div>
           {/* Profile button */}
           <div className="relative inline-block">
-      <div
-        className="text-blue-600 cursor-pointer hover:opacity-80"
-        onClick={() => setProfileopen((prev) => !prev)}
-      >
-        <FaUserCircle className="text-3xl" />
-      </div>
+            <div
+              className="text-blue-600 cursor-pointer hover:opacity-80"
+              onClick={() => setProfileopen((prev) => !prev)}
+            >
+              <FaUserCircle className="text-3xl" />
+            </div>
 
-      <Auth profileopen={profileopen} setProfileopen={setProfileopen} />
-    </div>
+            <Auth profileopen={profileopen} setProfileopen={setProfileopen} />
+          </div>
 
           {/* Hamburger Menu - shown only on small screens */}
           <div
