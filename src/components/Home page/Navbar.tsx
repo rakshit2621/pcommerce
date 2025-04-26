@@ -3,7 +3,12 @@ import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { GoHeart } from "react-icons/go";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import Auth from "../Auth/Auth";
+import ProfileComponent from "../Auth/ProfileComponent";
+import { useContext } from "react";
+import { MyContext } from "../Contexts/ContextProvider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import AnimatedHeartButton from "./Favourites";
 
 const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -18,12 +23,14 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center  text-red-600 cursor-pointer">
             <img src="/logo.png" alt="Logo" className="h-10" />
+
             <span className="text-2xl text-blue-400 font-nosifer">
               commerce
             </span>
           </div>
 
           {/* Nav Links (hide on small screens) */}
+
           <div className="hidden md:flex gap-6 text-blue-100">
             <div className="cursor-pointer hover:opacity-80">
               Business Services
@@ -35,8 +42,18 @@ const Navbar = () => {
 
         {/* Right Side */}
         <div className="flex items-center gap-6 text-white">
-          <div className="text-red-600 cursor-pointer hover:opacity-90">
-            <GoHeart className="text-3xl" />
+          {/* Heart favoutite sign */}
+          <div className="text-red-600 cursor-pointer hover:opacity-90 ">
+            <AnimatedHeartButton />
+            {/* {favopen ? (
+              <FontAwesomeIcon
+                icon={faHeart}
+                style={{ color: "#ff0000" }}
+                className="text-3xl"
+              />
+            ) : (
+              <GoHeart className="text-3xl" />
+            )} */}
           </div>
           {/* Profile button */}
           <div className="relative inline-block">
@@ -47,7 +64,10 @@ const Navbar = () => {
               <FaUserCircle className="text-3xl" />
             </div>
 
-            <Auth profileopen={profileopen} setProfileopen={setProfileopen} />
+            <ProfileComponent
+              profileopen={profileopen}
+              setProfileopen={setProfileopen}
+            />
           </div>
 
           {/* Hamburger Menu - shown only on small screens */}

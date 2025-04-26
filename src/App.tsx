@@ -1,14 +1,15 @@
 import Layout from "./components/main/Layout";
 import Home from "./components/Home page/Home";
-import {useContext} from "react";
-
+import { ContextProvider } from "./components/Contexts/ContextProvider";
 
 function App() {
   return (
     <div className="w-[99vw] h-[100vh]">
-      <Layout>
-        <Home />
-      </Layout>
+      <ContextProvider>
+        <Layout>
+          <Home />
+        </Layout>
+      </ContextProvider>
     </div>
   );
 }
