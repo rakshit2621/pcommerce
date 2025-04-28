@@ -46,12 +46,13 @@ function ProfileComponent({ profileopen, setProfileopen }: AuthProps) {
       className="absolute mt-3 right-0 z-50 bg-white border shadow-lg rounded-lg p-4 w-64"
     >
       {authenticated ? (
-        <Logout />
+        <Logout setProfileopen={setProfileopen} />
       ) : (
         <div className="space-y-3">
           <button
             className="w-full cursor-pointer flex items-center justify-center gap-2 bg-white text-gray-700 border border-gray-300 py-2.5 px-4 rounded-lg hover:bg-gray-50 transition-all shadow-sm"
             onClick={async () => {
+              // window.location.href = "http://localhost:8080/auth/google";
               const auth = await setAuth("google");
               console.log("auth ? ", auth);
               if (auth) {

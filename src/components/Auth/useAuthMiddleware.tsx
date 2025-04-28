@@ -7,8 +7,6 @@ function useAuthMiddleware() {
   const setAuth = useCallback(
     async (approach: string) => {
       // Placeholder for future API call
-      // const res = await fetch(...);
-      // const data = await res.json();
 
       const res = { status: true, message: "success", token: "dummytoken" };
 
@@ -37,6 +35,7 @@ function useAuthMiddleware() {
   const logout = useCallback(async () => {
     localStorage.removeItem("pcom-auth-token");
     setAuthenticated(false);
+    return true;
   }, [setAuthenticated]);
 
   return { setAuth, getAuth, logout };

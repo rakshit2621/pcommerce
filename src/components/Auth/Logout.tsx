@@ -1,23 +1,26 @@
 import { useState } from "react";
 import useAuthMiddleware from "./useAuthMiddleware";
+import { A } from "node_modules/framer-motion/dist/types.d-B50aGbjN";
 
-function Logout() {
+function Logout(props: any) {
   const [isAnimating, setIsAnimating] = useState(false);
   const { logout } = useAuthMiddleware();
+  const { setProfileopen } = props;
 
   const handleLogout = async () => {
     setIsAnimating(true);
-
-    // Simulate logout process
     try {
-      // Call the logout function from your auth middleware
-      // await logout();
-      console.log("Logged out");
-
+      const res = await logout();
+      if (res) {
+        console.log("Logout successful");
+        setProfileopen(false); // Close the profile menu after logout
+      } else {
+        console.error("Logout failed");
+      }
       // Keep animation for a moment before potentially redirecting
       setTimeout(() => {
         setIsAnimating(false);
-      }, 100); // Reduced to 100ms as requested
+      }, 100);
     } catch (error) {
       setIsAnimating(false);
       console.error("Logout failed", error);
