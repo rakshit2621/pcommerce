@@ -13,7 +13,7 @@ interface AuthProps {
 function ProfileComponent({ profileopen, setProfileopen }: AuthProps) {
   const boxRef = useRef<HTMLDivElement>(null);
   const { authenticated } = useContext(MyContext) as any; //use the context to set the authenticated state
-  const { setAuth, getAuth, logout } = useAuthMiddleware();
+  // const { setAuth, getAuth, logout } = useAuthMiddleware();
 
   // Close on outside click
   useEffect(() => {
@@ -52,12 +52,8 @@ function ProfileComponent({ profileopen, setProfileopen }: AuthProps) {
           <button
             className="w-full cursor-pointer flex items-center justify-center gap-2 bg-white text-gray-700 border border-gray-300 py-2.5 px-4 rounded-lg hover:bg-gray-50 transition-all shadow-sm"
             onClick={async () => {
-              // window.location.href = "http://localhost:8080/auth/google";
-              const auth = await setAuth("google");
-              console.log("auth ? ", auth);
-              if (auth) {
-                setProfileopen(false);
-              }
+             window.location.href = "http://localhost:8080/auth/google";
+
             }}
           >
             {/* Google Icon with proper colors */}
@@ -88,7 +84,9 @@ function ProfileComponent({ profileopen, setProfileopen }: AuthProps) {
 
           <button
             className="w-full cursor-pointer flex items-center justify-center gap-2 bg-black text-white py-2 px-4 rounded hover:bg-gray-900 transition-colors"
-            onClick={() => console.log("GitHub login")}
+            onClick={() => {
+              window.location.href = "http://localhost:8080/auth/github";
+            }}
           >
             <Github className="w-5 h-5" />
             Sign in with GitHub

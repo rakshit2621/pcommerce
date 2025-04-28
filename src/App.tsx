@@ -1,5 +1,3 @@
-import Layout from "./components/main/Layout";
-import Home from "./components/Home page/Home";
 import { ContextProvider } from "./components/Contexts/ContextProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GoogleauthCallback from "./components/Routes/GoogleauthCallback";
