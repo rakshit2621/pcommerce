@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Heart, X } from "lucide-react";
 import { MyContext } from "../Contexts/ContextProvider";
@@ -14,14 +14,13 @@ export default function AnimatedHeartButton() {
   }
 
   const { favopen, setFavopen } = context; // Destructure the context to get favopen and setFavopen
-
+  // Add this line to trigger a re-render when favopen changes
   const toggleExpand = () => {
     if (authenticated == false) {
       setShowlogin(true);
       return;
     }
     setFavopen(!favopen);
-    console.log(favopen);
   };
 
   return (

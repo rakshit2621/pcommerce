@@ -1,22 +1,25 @@
 import { ContextProvider } from "./components/Contexts/ContextProvider";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MainComponent from "./components/MainComponent";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import GoogleauthCallback from "./components/Routes/GoogleauthCallback";
+
 function App() {
   return (
-    <ContextProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <div className="w-[99vw] h-[100vh]">
-                <MainComponent />
-              </div>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
-    </ContextProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="w-[99vw] h-[100vh]">
+              <ContextProvider>
+                <Layout>
+                  <Home />
+                </Layout>
+              </ContextProvider>
+            </div>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -5,13 +5,14 @@ function useAuthMiddleware() {
   const { setAuthenticated } = useContext(MyContext) as any;
 
   const setAuth = useCallback(
-    async (approach: { message: string; token: string | null }) => {
+   async (approach: { message: string; token: string | null }) => {
       const res = {
         status: true,
         message: approach.message,
         token: approach.token,
       };
       if (res.message.toLowerCase() == "success" && res.token) {
+
         localStorage.setItem("pcom-auth-token", res.token);
         setAuthenticated(true);
         return true;
@@ -36,6 +37,7 @@ function useAuthMiddleware() {
   const logout = useCallback(async () => {
     localStorage.removeItem("pcom-auth-token");
     setAuthenticated(false);
+    return true;
   }, [setAuthenticated]);
 
   return { setAuth, getAuth, logout };
