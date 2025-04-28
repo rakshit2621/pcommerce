@@ -118,7 +118,9 @@ const LoginPopup = ({ onClose }: { onClose: () => void }) => {
 
               <button
                 className="w-full flex items-center justify-center gap-2 bg-black text-white py-2.5 px-4 rounded-lg hover:bg-gray-900 transition-colors cursor-pointer"
-                onClick={() => console.log("GitHub login")}
+                onClick={() => {
+                  window.location.href = "http://localhost:8080/auth/github";
+                }}
               >
                 <Github className="w-5 h-5" />
                 Sign in with GitHub

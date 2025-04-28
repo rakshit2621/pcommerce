@@ -11,7 +11,6 @@ function useAuthMiddleware() {
         message: approach.message,
         token: approach.token,
       };
-      console.log(res);
       if (res.message.toLowerCase() == "success" && res.token) {
         localStorage.setItem("pcom-auth-token", res.token);
         setAuthenticated(true);

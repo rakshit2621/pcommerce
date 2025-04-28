@@ -88,7 +88,9 @@ function ProfileComponent({ profileopen, setProfileopen }: AuthProps) {
 
           <button
             className="w-full cursor-pointer flex items-center justify-center gap-2 bg-black text-white py-2 px-4 rounded hover:bg-gray-900 transition-colors"
-            onClick={() => console.log("GitHub login")}
+            onClick={() => {
+              window.location.href = "http://localhost:8080/auth/github";
+            }}
           >
             <Github className="w-5 h-5" />
             Sign in with GitHub

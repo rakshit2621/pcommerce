@@ -1,8 +1,6 @@
-import Layout from "./components/main/Layout";
-import Home from "./components/Home page/Home";
 import { ContextProvider } from "./components/Contexts/ContextProvider";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AuthRedirect from "./components/Auth/AuthRedirect";
+import MainComponent from "./components/MainComponent";
 function App() {
   return (
     <ContextProvider>
@@ -12,13 +10,10 @@ function App() {
             path="/"
             element={
               <div className="w-[99vw] h-[100vh]">
-                <Layout>
-                  <Home />
-                </Layout>
+                <MainComponent />
               </div>
             }
           />
-          <Route path="/auth" element={<AuthRedirect />} />
         </Routes>
       </BrowserRouter>
     </ContextProvider>

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { GoHeart } from "react-icons/go";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
@@ -9,11 +9,16 @@ import { MyContext } from "../Contexts/ContextProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import AnimatedHeartButton from "./Favourites";
+import { Image } from "lucide-react";
 
 const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profileopen, setProfileopen] = useState(false);
 
+  const { userInfo } = useContext(MyContext) as any;
+  useEffect(() => {
+    console.log(userInfo);
+  }, [userInfo]);
   return (
     <>
       {/* Navbar */}
@@ -61,7 +66,14 @@ const Navbar = () => {
               className="text-blue-600 cursor-pointer hover:opacity-80"
               onClick={() => setProfileopen((prev) => !prev)}
             >
-              <FaUserCircle className="text-3xl" />
+              {!userInfo.photo && <FaUserCircle className="text-3xl" />}
+              {userInfo.photo && (
+                <img
+                  src={userInfo ? userInfo["photo"] : " "}
+                  alt="user"
+                  className="md:w-[5vmax] lg:w-[3vmax] rounded-full"
+                />
+              )}
             </div>
 
             <ProfileComponent
