@@ -6,8 +6,6 @@ import useAuthMiddleware from "../Auth/useAuthMiddleware";
 
 const LoginPopup = ({ onClose }: { onClose: () => void }) => {
   const modalRef = useRef<HTMLDivElement>(null);
-  const { setAuth } = useAuthMiddleware();
-
   // Close on outside click
   const handleClickOutside = (e: MouseEvent) => {
     if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
@@ -90,8 +88,7 @@ const LoginPopup = ({ onClose }: { onClose: () => void }) => {
               <button
                 className="w-full flex items-center justify-center gap-2 bg-white text-gray-700 border border-gray-300 py-2.5 px-4 rounded-lg hover:bg-gray-50 transition-all shadow-sm cursor-pointer"
                 onClick={async () => {
-                  const auth = await setAuth("google");
-                  if (auth) handleLogin();
+                  window.location.href = "http://localhost:8080/auth/google";
                 }}
               >
                 <svg

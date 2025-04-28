@@ -13,7 +13,7 @@ interface AuthProps {
 function ProfileComponent({ profileopen, setProfileopen }: AuthProps) {
   const boxRef = useRef<HTMLDivElement>(null);
   const { authenticated } = useContext(MyContext) as any; //use the context to set the authenticated state
-  const { setAuth, getAuth, logout } = useAuthMiddleware();
+  // const { setAuth, getAuth, logout } = useAuthMiddleware();
 
   // Close on outside click
   useEffect(() => {
@@ -52,11 +52,12 @@ function ProfileComponent({ profileopen, setProfileopen }: AuthProps) {
           <button
             className="w-full cursor-pointer flex items-center justify-center gap-2 bg-white text-gray-700 border border-gray-300 py-2.5 px-4 rounded-lg hover:bg-gray-50 transition-all shadow-sm"
             onClick={async () => {
-              const auth = await setAuth("google");
-              console.log("auth ? ", auth);
-              if (auth) {
-                setProfileopen(false);
-              }
+              // const auth = await setAuth("google");
+              // console.log("auth ? ", auth);
+              // if (auth) {
+              //   setProfileopen(false);
+              // }
+              window.location.href = "http://localhost:8080/auth/google";
             }}
           >
             {/* Google Icon with proper colors */}

@@ -5,14 +5,14 @@ function useAuthMiddleware() {
   const { setAuthenticated } = useContext(MyContext) as any;
 
   const setAuth = useCallback(
-    async (approach: string) => {
-      // Placeholder for future API call
-      // const res = await fetch(...);
-      // const data = await res.json();
-
-      const res = { status: true, message: "success", token: "dummytoken" };
-
-      if (res.message === "success") {
+    async (approach: { message: string; token: string | null }) => {
+      const res = {
+        status: true,
+        message: approach.message,
+        token: approach.token,
+      };
+      console.log(res);
+      if (res.message.toLowerCase() == "success" && res.token) {
         localStorage.setItem("pcom-auth-token", res.token);
         setAuthenticated(true);
         return true;
