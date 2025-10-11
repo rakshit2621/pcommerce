@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import Layout from "./main/Layout";
 import Home from "./Home page/Home";
 import { MyContext } from "./Contexts/ContextProvider";

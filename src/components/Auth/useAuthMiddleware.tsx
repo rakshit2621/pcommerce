@@ -1,18 +1,18 @@
 import { useContext, useCallback } from "react";
 import { MyContext } from "../Contexts/ContextProvider";
+import axios from "axios";
 
 function useAuthMiddleware() {
-  const { setAuthenticated } = useContext(MyContext) as any;
+  const { setAuthenticated, setUserInfo } = useContext(MyContext) as any;
 
   const setAuth = useCallback(
-   async (approach: { message: string; token: string | null }) => {
+    async (approach: { message: string; token: string | null }) => {
       const res = {
         status: true,
         message: approach.message,
         token: approach.token,
       };
       if (res.message.toLowerCase() == "success" && res.token) {
-
         localStorage.setItem("pcom-auth-token", res.token);
         setAuthenticated(true);
         return true;
@@ -34,11 +34,19 @@ function useAuthMiddleware() {
     }
   }, [setAuthenticated]);
 
-  const logout = useCallback(async () => {
-    localStorage.removeItem("pcom-auth-token");
+  const logout = async () => {
+    await axios.post(
+      "http://localhost:8080/auth/logout",
+      {},
+      {
+        withCredentials: true,
+      }
+    );
+
     setAuthenticated(false);
+    setUserInfo([]);
     return true;
-  }, [setAuthenticated]);
+  };
 
   return { setAuth, getAuth, logout };
 }

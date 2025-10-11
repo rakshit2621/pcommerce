@@ -1,6 +1,6 @@
 import { ContextProvider } from "./components/Contexts/ContextProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import GoogleauthCallback from "./components/Routes/GoogleauthCallback";
+import MainComponent from "./components/MainComponent";
 
 function App() {
   return (
@@ -11,9 +11,7 @@ function App() {
           element={
             <div className="w-[99vw] h-[100vh]">
               <ContextProvider>
-                <Layout>
-                  <Home />
-                </Layout>
+                <MainComponent />
               </ContextProvider>
             </div>
           }
