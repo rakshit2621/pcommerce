@@ -1,6 +1,5 @@
 import { useState } from "react";
 import useAuthMiddleware from "./useAuthMiddleware";
-import { A } from "node_modules/framer-motion/dist/types.d-B50aGbjN";
 
 function Logout(props: any) {
   const [isAnimating, setIsAnimating] = useState(false);

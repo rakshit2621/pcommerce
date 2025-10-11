@@ -7,12 +7,12 @@ import { MyContext } from "../Contexts/ContextProvider";
 
 function Home() {
   // const { authenticated } = useContext(MyContext) as any;
-  const { getAuth } = useAuthMiddleware(); //use the context to set the authenticated state
+  const { userInfo } = useContext(MyContext) as any; //use the context to set the authenticated state
   useEffect(() => {
     //when page loads, check if the user is authenticated
     const fetchAuthStatus = async () => {
       try {
-        const res: boolean = await getAuth(); // Await the asynchronous function
+        const res: any = userInfo?.profile; // Await the asynchronous function
         if (res) {
           console.log("authenticated");
         } else {

@@ -21,21 +21,18 @@ const Navbar = () => {
   }, [userInfo]);
   return (
     <>
-      {/* Navbar */}
-      <nav className="fixed top-0 left-1/2 transform -translate-x-1/2 w-full h-18 bg-black/40 backdrop-blur-md rounded-b-md z-50 shadow-md border border-white/10 flex items-center justify-between px-6">
+      <nav className="fixed top-0 left-1/2 transform -translate-x-1/2 w-full h-18 bg-black/70 backdrop-blur-md rounded-b-md z-50 shadow-md border border-white/10 flex items-center justify-between px-6">
         {/* Left Side */}
         <div className="text-white text-lg font-semibold flex items-center gap-8">
           {/* Logo */}
-          <div className="flex items-center  text-red-600 cursor-pointer">
+          <div className="flex items-center text-red-600 cursor-pointer">
             <img src="/logo.png" alt="Logo" className="h-10" />
-
-            <span className="text-2xl text-blue-400 font-nosifer">
+            <span className="text-2xl text-blue-400 font-nosifer hidden md:inline">
               commerce
             </span>
           </div>
 
           {/* Nav Links (hide on small screens) */}
-
           <div className="hidden md:flex gap-6 text-blue-100">
             <div className="cursor-pointer hover:opacity-80">
               Business Services
@@ -47,18 +44,9 @@ const Navbar = () => {
 
         {/* Right Side */}
         <div className="flex items-center gap-6 text-white">
-          {/* Heart favoutite sign */}
+          {/* Heart favourite sign */}
           <div className="text-red-600 cursor-pointer hover:opacity-90 ">
             <AnimatedHeartButton />
-            {/* {favopen ? (
-              <FontAwesomeIcon
-                icon={faHeart}
-                style={{ color: "#ff0000" }}
-                className="text-3xl"
-              />
-            ) : (
-              <GoHeart className="text-3xl" />
-            )} */}
           </div>
           {/* Profile button */}
           <div className="relative inline-block">
@@ -69,7 +57,7 @@ const Navbar = () => {
               {!userInfo.photo && <FaUserCircle className="text-3xl" />}
               {userInfo.photo && (
                 <img
-                  src={userInfo ? userInfo["photo"] : " "}
+                  src={userInfo ? userInfo["photo"] + "?sz=200" : ""}
                   alt="user"
                   className="md:w-[5vmax] lg:w-[3vmax] rounded-full"
                 />
@@ -107,7 +95,6 @@ const Navbar = () => {
         }`}
       >
         <div className="flex justify-end p-4">
-          {/* <span className="text-xl font-bold">Menu</span> */}
           <HiX
             className="text-2xl cursor-pointer text-gray-300"
             onClick={() => setSidebarOpen(false)}
